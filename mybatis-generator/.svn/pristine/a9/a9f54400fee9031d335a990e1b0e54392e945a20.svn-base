@@ -1,0 +1,3 @@
+package com.morp.dao; 
+
+public interface UserDao

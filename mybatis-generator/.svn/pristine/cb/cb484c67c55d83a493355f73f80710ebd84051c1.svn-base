@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.morp.dao.UserDao">
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="addUserEbo" useGeneratedKeys="true" keyProperty="uid" >
+        INSERT INTO t_user( uid,nick_name,user_name,pass_word,email,mobile_num,mobile_flag,
+                         user_type,reg_time,status,face,effect_from,effect_to,source_flag,
+                         create_time,org_id )
+        VALUES ( #{uid},#{nickName},#{userName},#{passWord},#{email},#{mobileNum},#{mobileFlag},
+                 #{userType},#{regTime},#{status},#{face},#{effectFrom},#{effectTo},#{sourceFlag},
+                 #{createTime},#{orgId})
+    </insert>
+
+
+    <!-- batch insert for mysql -->
+    <insert id="saveUserEbo">
+        INSERT INTO t_user( uid,nick_name,user_name,pass_word,email,mobile_num,mobile_flag,
+                          user_type,reg_time,status,face,effect_from,effect_to,source_flag,
+                          create_time,org_id )
+        VALUES 
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.uid},#{item.nickName},#{item.userName},#{item.passWord},#{item.email},#{item.mobileNum},#{item.mobileFlag},
+              #{item.userType},#{item.regTime},#{item.status},#{item.face},#{item.effectFrom},#{item.effectTo},#{item.sourceFlag},
+              #{item.createTime},#{item.orgId} )
+        </foreach>
+    </insert>
+
+
+    <!-- batch insert for oracle -->
+    <!--
+    <insert id="saveBatch">
+        INSERT INTO t_user( uid,nick_name,user_name,pass_word,email,mobile_num,mobile_flag,
+                          user_type,reg_time,status,face,effect_from,effect_to,source_flag,
+                          create_time,org_id )
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT #{item.uid},#{item.nickName},#{item.userName},#{item.passWord},#{item.email},#{item.mobileNum},#{item.mobileFlag},
+              #{item.userType},#{item.regTime},#{item.status},#{item.face},#{item.effectFrom},#{item.effectTo},#{item.sourceFlag},
+              #{item.createTime},#{item.orgId} 
+              FROM DUAL 
+        </foreach>
+    </insert>
+
+    -->
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="updateUserEbo">
+        UPDATE t_user
+        <set>
+            nick_name=#{nickName},
+            user_name=#{userName},
+            pass_word=#{passWord},
+            email=#{email},
+            mobile_num=#{mobileNum},
+            mobile_flag=#{mobileFlag},
+            user_type=#{userType},
+            reg_time=#{regTime},
+            status=#{status},
+            face=#{face},
+            effect_from=#{effectFrom},
+            effect_to=#{effectTo},
+            source_flag=#{sourceFlag},
+            create_time=#{createTime},
+            org_id=#{orgId},
+        </set>
+        WHERE uid=#{uid} 
+    </update>
+
+    <update id="updateIgnoreNull">
+        UPDATE t_user
+        <set>
+            <if test="nickName!= null">nick_name=#{nickName},</if>
+            <if test="userName!= null">user_name=#{userName},</if>
+            <if test="passWord!= null">pass_word=#{passWord},</if>
+            <if test="email!= null">email=#{email},</if>
+            <if test="mobileNum!= null">mobile_num=#{mobileNum},</if>
+            <if test="mobileFlag!= null">mobile_flag=#{mobileFlag},</if>
+            <if test="userType!= null">user_type=#{userType},</if>
+            <if test="regTime!= null">reg_time=#{regTime},</if>
+            <if test="status!= null">status=#{status},</if>
+            <if test="face!= null">face=#{face},</if>
+            <if test="effectFrom!= null">effect_from=#{effectFrom},</if>
+            <if test="effectTo!= null">effect_to=#{effectTo},</if>
+            <if test="sourceFlag!= null">source_flag=#{sourceFlag},</if>
+            <if test="createTime!= null">create_time=#{createTime},</if>
+            <if test="orgId!= null">org_id=#{orgId},</if>
+        </set>
+        WHERE uid=#{uid} 
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <foreach collection="listUserEbo" item="item" index="index"  separator=";">
+            UPDATE t_user
+            <set>
+                nick_name=#{item.nickName},
+                user_name=#{item.userName},
+                pass_word=#{item.passWord},
+                email=#{item.email},
+                mobile_num=#{item.mobileNum},
+                mobile_flag=#{item.mobileFlag},
+                user_type=#{item.userType},
+                reg_time=#{item.regTime},
+                status=#{item.status},
+                face=#{item.face},
+                effect_from=#{item.effectFrom},
+                effect_to=#{item.effectTo},
+                source_flag=#{item.sourceFlag},
+                create_time=#{item.createTime},
+                org_id=#{item.orgId},
+            </set>
+            WHERE uid=#{item.uid} 
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delUserEbo">
+        DELETE FROM t_user
+        WHERE uid=#{uid} 
+    </delete>
+
+    <delete id="delBatchUserEbo">
+        DELETE FROM t_user
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            uid=#{item.uid} 
+        </foreach>
+    </delete>
+
+    <delete id="deleteByPK">
+        DELETE FROM t_user
+        WHERE uid=#{uid} 
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM t_user
+    </delete>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_user
+    </select>
+
+    <select id="findByPK" resultType="UserEbo">
+        SELECT * FROM t_user
+        WHERE uid=#{uid} 
+    </select>
+
+    <select id="find" resultType="UserEbo">
+        SELECT uid,nick_name,user_name,pass_word,email,mobile_num,mobile_flag,user_type
+               ,reg_time,status,face,effect_from,effect_to,source_flag,create_time
+               ,org_id
+         FROM t_user
+        <where>
+            <if test="uid!= null">
+               AND uid = #{uid}
+            </if>
+            <if test="nickName!= null">
+               AND nick_name = #{nickName}
+            </if>
+            <if test="userName!= null">
+               AND user_name = #{userName}
+            </if>
+            <if test="passWord!= null">
+               AND pass_word = #{passWord}
+            </if>
+            <if test="email!= null">
+               AND email = #{email}
+            </if>
+            <if test="mobileNum!= null">
+               AND mobile_num = #{mobileNum}
+            </if>
+            <if test="mobileFlag!= null">
+               AND mobile_flag = #{mobileFlag}
+            </if>
+            <if test="userType!= null">
+               AND user_type = #{userType}
+            </if>
+            <if test="regTime!= null">
+               AND reg_time = #{regTime}
+            </if>
+            <if test="status!= null">
+               AND status = #{status}
+            </if>
+            <if test="face!= null">
+               AND face = #{face}
+            </if>
+            <if test="effectFrom!= null">
+               AND effect_from = #{effectFrom}
+            </if>
+            <if test="effectTo!= null">
+               AND effect_to = #{effectTo}
+            </if>
+            <if test="sourceFlag!= null">
+               AND source_flag = #{sourceFlag}
+            </if>
+            <if test="createTime!= null">
+               AND create_time = #{createTime}
+            </if>
+            <if test="orgId!= null">
+               AND org_id = #{orgId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

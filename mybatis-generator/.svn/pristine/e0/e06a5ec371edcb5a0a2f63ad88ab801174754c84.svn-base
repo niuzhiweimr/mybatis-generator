@@ -1,0 +1,352 @@
+2018-01-23 13:50 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 13:50 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 13:50 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 13:50 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 13:50 INFO -com.mg.generator.ConfigLoader >>55
+2018-01-23 13:50 INFO -com.mg.generator.ConfigLoader >>3
+2018-01-23 13:50 DEBUG -com.mg.generator.ConfigLoader >>menu<<
+2018-01-23 13:50 DEBUG -com.mg.generator.ConfigLoader >>book_editor<<
+2018-01-23 13:50 DEBUG -com.mg.generator.ConfigLoader >>editor<<
+2018-01-23 13:55 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 13:55 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 13:55 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 13:55 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 13:55 INFO -com.mg.generator.ConfigLoader >>55
+2018-01-23 13:55 INFO -com.mg.generator.ConfigLoader >>3
+2018-01-23 13:55 DEBUG -com.mg.generator.ConfigLoader >>menu<<
+2018-01-23 13:55 DEBUG -com.mg.generator.ConfigLoader >>book_editor<<
+2018-01-23 13:55 DEBUG -com.mg.generator.ConfigLoader >>editor<<
+2018-01-23 18:47 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 18:47 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 18:47 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 18:47 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 18:47 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:47 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:56)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:47 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:47 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:56)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:47 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:47 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:56)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:48 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 18:48 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 18:48 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 18:48 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 18:48 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:48 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:56)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:54 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 18:54 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 18:54 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 18:54 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 18:54 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:54 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:56 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 18:56 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 18:56 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 18:56 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 18:56 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:57 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 18:58 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 18:58 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 18:58 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 18:58 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 18:59 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 18:59 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 19:01 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:01 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:01 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:01 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:02 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 19:02 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 19:07 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:07 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:07 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:07 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:07 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 19:07 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 19:07 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:07 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:07 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:07 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:07 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 19:07 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 19:09 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:09 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:09 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:09 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:09 INFO -com.mg.generator.DBResource Databases connection failure error{Access denied for user 'root'@'localhost' (using password: YES)}
+2018-01-23 19:09 ERROR -com.mg.generator.DBResource String index out of range: -1
+java.lang.StringIndexOutOfBoundsException: String index out of range: -1
+	at java.lang.AbstractStringBuilder.delete(AbstractStringBuilder.java:694)
+	at java.lang.StringBuffer.delete(StringBuffer.java:369)
+	at com.mg.generator.CodeBuilder.buildEntitySource(CodeBuilder.java:101)
+	at com.mg.generator.CallGenerator.generator(CallGenerator.java:59)
+	at com.mg.generator.CallGenerator.main(CallGenerator.java:20)
+2018-01-23 19:10 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:10 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:10 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:10 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:11 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:11 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:11 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:11 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:48 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:48 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:48 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:48 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:51 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:51 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:51 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:51 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:51 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:51 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:51 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:53 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:53 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:53 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:53 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:53 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:53 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:53 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:59 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 19:59 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 19:59 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 19:59 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 20:03 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 20:03 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 20:03 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 20:03 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 20:04 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 20:04 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 20:06 INFO -com.mg.generator.ConfigLoader Load fileNamemybatis-generator.xml
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader dataSource
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader params
+2018-01-23 20:06 INFO -com.mg.generator.ConfigLoader Load {} successful! mybatis-generator.xml
+2018-01-23 20:06 INFO -com.mg.generator.DBResource Databases connection successful
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader uid: 4(INT), 11(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader nick_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader user_name: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader pass_word: 12(VARCHAR), 80(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader email: 12(VARCHAR), 120(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader mobile_num: 12(VARCHAR), 20(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader mobile_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader user_type: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader reg_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader status: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader face: 12(VARCHAR), 255(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader effect_from: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader effect_to: 91(DATE), 10(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader source_flag: 1(CHAR), 1(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader create_time: 93(DATETIME), 19(精确度), 0(小数点后位数)
+2018-01-23 20:06 DEBUG -com.mg.generator.ConfigLoader org_id: 4(INT), 11(精确度), 0(小数点后位数)

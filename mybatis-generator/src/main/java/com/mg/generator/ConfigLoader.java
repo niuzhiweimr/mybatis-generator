@@ -1,0 +1,130 @@
+package com.mg.generator;
+
+import java.io.File;
+import java.net.URL;
+import java.util.*;
+import org.apache.log4j.Logger;
+import org.dom4j.*;
+import com.mg.constant.Constant;
+import com.mg.util.XmlUtil;
+
+/**
+ * 配置加载类
+ * 
+ * @author niuzhiwei
+ * 
+ */
+public class ConfigLoader {
+
+	private static Logger logger = Logger.getLogger(ConfigLoader.class);
+
+	private static final String CONFI_FILENAME = Constant.MYBATIS_XML_FILE_PATH;
+
+	private static Map<String, String> configMap = new HashMap<String, String>();
+
+	// 静态块初始化加载信息
+	static {
+		load();
+	}
+
+	private ConfigLoader() {
+	}
+
+	// 获取配置的jdbc驱动
+	public static String getJdbcDriver() {
+		return configMap.get("jdbcDriver");
+	}
+
+	// 获取jdbcurl
+	public static String getJdbcUrl() {
+		return configMap.get("jdbcUrl");
+	}
+
+	// 获取数据库用户名
+	public static String getUsername() {
+		return configMap.get("username");
+	}
+
+	// 获取数据库密码
+	public static String getPassword() {
+		return configMap.get("password");
+	}
+
+	// 获取生成代码的输出目录
+	public static String getOutputDirc() {
+		return configMap.get("outputDirc");
+	}
+
+	// 获取POJO生成的包
+	public static String getEntityPackage() {
+		return configMap.get("entityPackage");
+	}
+
+	// 获取DAO生成的包
+	public static String getDaoPackage() {
+		return configMap.get("daoPackage");
+	}
+
+	@SuppressWarnings("unchecked")
+	public static String[] getTables() {
+
+		String str = configMap.get("tables");
+		StringTokenizer tokenizer = new StringTokenizer(str, ",");
+
+		@SuppressWarnings("rawtypes")
+		List tableList = new ArrayList<String>();
+		while (tokenizer.hasMoreElements()) {
+			String tableName = (String) tokenizer.nextElement();
+			tableList.add(tableName.trim());
+		}
+		return (String[]) tableList.toArray(new String[0]);
+	}
+
+	// 从data-handler装载handlers类
+	@SuppressWarnings("unchecked")
+	private static void load() {
+		Document doc = null;
+		try {
+			File file = new File(CONFI_FILENAME);
+			if (!file.exists()) {
+				URL url = ConfigLoader.class.getClassLoader().getResource(CONFI_FILENAME);
+				file = new File(url.getPath());
+			}
+			doc = XmlUtil.read(file);
+			Element root = doc.getRootElement();
+			Element dsElement = root.element("dataSource");
+			for (Iterator<Element> it = dsElement.elementIterator(); it.hasNext();) {
+				Element e = it.next();
+				configMap.put(e.attribute("name").getValue(), e.attribute("value").getValue().trim());
+			}
+			Element psElement = root.element("params");
+			for (Iterator<Element> it = psElement.elementIterator(); it.hasNext();) {
+				Element e = it.next();
+				configMap.put(e.attribute("name").getValue(), e.attribute("value").getValue().trim());
+			}
+
+			logger.info("Load {} successful! " + CONFI_FILENAME);
+
+		} catch (Exception e) {
+			logger.error("Load {} failed! " + CONFI_FILENAME, e);
+		} finally {
+			if (doc != null) {
+				doc.clearContent();
+			}
+		}
+
+	}
+
+	public static void main(String[] args) {
+
+		String a = "hello,word";
+		logger.info(">>" + a.split(",").length);
+
+		logger.info(">>" + ConfigLoader.getTables().length);
+		String[] b = ConfigLoader.getTables();
+		for (int i = 0; i < b.length; i++) {
+			logger.debug(">>" + b[i] + "<<");
+		}
+	}
+
+}

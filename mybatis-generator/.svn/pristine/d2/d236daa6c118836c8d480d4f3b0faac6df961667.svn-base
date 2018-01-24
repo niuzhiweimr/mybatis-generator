@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.morp.dao.IUserDao">
+
+    <!-- ============================= resultMap ============================= -->
+    <resultMap id="UserEboMap" type="com.morp.model.UserEbo" >
+        <result property="uid" column="uid" jdbcType="INT" javaType="Integer" >
+        <result property="nickName" column="nick_name" jdbcType="VARCHAR" javaType="String" >
+        <result property="userName" column="user_name" jdbcType="VARCHAR" javaType="String" >
+        <result property="passWord" column="pass_word" jdbcType="VARCHAR" javaType="String" >
+        <result property="email" column="email" jdbcType="VARCHAR" javaType="String" >
+        <result property="mobileNum" column="mobile_num" jdbcType="VARCHAR" javaType="String" >
+        <result property="mobileFlag" column="mobile_flag" jdbcType="CHAR" javaType="String" >
+        <result property="userType" column="user_type" jdbcType="CHAR" javaType="String" >
+        <result property="regTime" column="reg_time" jdbcType="DATETIME" javaType="java.sql.Timestamp" >
+        <result property="status" column="status" jdbcType="CHAR" javaType="String" >
+        <result property="face" column="face" jdbcType="VARCHAR" javaType="String" >
+        <result property="effectFrom" column="effect_from" jdbcType="DATE" javaType="java.sql.Date" >
+        <result property="effectTo" column="effect_to" jdbcType="DATE" javaType="java.sql.Date" >
+        <result property="sourceFlag" column="source_flag" jdbcType="CHAR" javaType="String" >
+        <result property="createTime" column="create_time" jdbcType="DATETIME" javaType="java.sql.Timestamp" >
+        <result property="orgId" column="org_id" jdbcType="INT" javaType="Integer" >
+    </resultMap> 
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="addUserEbo" parameterType="com.morp.model.UserEbo" useGeneratedKeys="true" keyProperty="uid" >
+        INSERT INTO t_user( nick_name,user_name,pass_word,email,mobile_num,mobile_flag,user_type,
+                         reg_time,status,face,effect_from,effect_to,source_flag,create_time,
+                         org_id )
+        VALUES ( #{nickName},#{userName},#{passWord},#{email},#{mobileNum},#{mobileFlag},#{userType},
+                 #{regTime},#{status},#{face},#{effectFrom},#{effectTo},#{sourceFlag},#{createTime},
+                 #{orgId})
+    </insert>
+
+
+    <!-- ============================= BACTH INSTER ============================= -->
+    <insert id="batchAddUserEbo" parameterType="com.morp.model.UserEbo" useGeneratedKeys="true" keyProperty="uid" >
+        INSERT INTO t_user( nick_name,user_name,pass_word,email,mobile_num,mobile_flag,user_type,
+                          reg_time,status,face,effect_from,effect_to,source_flag,create_time,
+                          org_id )
+        VALUES 
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.nickName},#{item.userName},#{item.passWord},#{item.email},#{item.mobileNum},#{item.mobileFlag},#{item.userType},
+              #{item.regTime},#{item.status},#{item.face},#{item.effectFrom},#{item.effectTo},#{item.sourceFlag},#{item.createTime},
+              #{item.orgId} )
+        </foreach>
+    </insert>
+
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="updateUserEbo">
+        UPDATE t_user
+        <set>
+          <if test="nickName!= null">nick_name=#{nickName},</if>
+          <if test="userName!= null">user_name=#{userName},</if>
+          <if test="passWord!= null">pass_word=#{passWord},</if>
+          <if test="email!= null">email=#{email},</if>
+          <if test="mobileNum!= null">mobile_num=#{mobileNum},</if>
+          <if test="mobileFlag!= null">mobile_flag=#{mobileFlag},</if>
+          <if test="userType!= null">user_type=#{userType},</if>
+          <if test="regTime!= null">reg_time=#{regTime},</if>
+          <if test="status!= null">status=#{status},</if>
+          <if test="face!= null">face=#{face},</if>
+          <if test="effectFrom!= null">effect_from=#{effectFrom},</if>
+          <if test="effectTo!= null">effect_to=#{effectTo},</if>
+          <if test="sourceFlag!= null">source_flag=#{sourceFlag},</if>
+          <if test="createTime!= null">create_time=#{createTime},</if>
+          <if test="orgId!= null">org_id=#{orgId},</if>
+        </set>
+        WHERE uid=#{uid} 
+    </update>
+
+
+    <!-- ============================= BATCH UPDATE ============================= -->
+    <update id="batchUpdateUserEbo" parameterType="java.util.List">
+        <foreach collection="listUserEbo" item="item" index="index"  separator=";">
+            UPDATE t_user
+            <set>
+            <if test="nickName!= null">nick_name=#{nickName},</if>
+            <if test="userName!= null">user_name=#{userName},</if>
+            <if test="passWord!= null">pass_word=#{passWord},</if>
+            <if test="email!= null">email=#{email},</if>
+            <if test="mobileNum!= null">mobile_num=#{mobileNum},</if>
+            <if test="mobileFlag!= null">mobile_flag=#{mobileFlag},</if>
+            <if test="userType!= null">user_type=#{userType},</if>
+            <if test="regTime!= null">reg_time=#{regTime},</if>
+            <if test="status!= null">status=#{status},</if>
+            <if test="face!= null">face=#{face},</if>
+            <if test="effectFrom!= null">effect_from=#{effectFrom},</if>
+            <if test="effectTo!= null">effect_to=#{effectTo},</if>
+            <if test="sourceFlag!= null">source_flag=#{sourceFlag},</if>
+            <if test="createTime!= null">create_time=#{createTime},</if>
+            <if test="orgId!= null">org_id=#{orgId},</if>
+            </set>
+            WHERE uid=#{item.uid} 
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delUserEboById">
+        DELETE FROM t_user
+        WHERE uid=#{uid} 
+    </delete>
+
+
+    <!-- ============================= BABCH DELETE ============================= -->
+    <delete id="delBatchUserEboById">
+        DELETE FROM t_user
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            uid=#{item.uid} 
+        </foreach>
+    </delete>
+
+
+    <!-- ============================= DELETE ALL ============================= -->
+    <delete id="deleteAll">
+        DELETE FROM t_user
+    </delete>
+
+
+    <!-- ============================= SELECT COUNT============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_userASt_user
+    </select>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="listUserEbo" resultMap="UserEboMap">
+        SELECT t_user.uid,t_user.nick_name,t_user.user_name,t_user.pass_word,t_user.email,t_user.mobile_num,t_user.mobile_flag,t_user.user_type
+               ,t_user.reg_time,t_user.status,t_user.face,t_user.effect_from,t_user.effect_to,t_user.source_flag,t_user.create_time
+               ,t_user.org_id
+         FROM t_user AS t_user
+        <where>
+            <if test="uid!= null">
+               AND t_user.uid = #{uid}
+            </if>
+            <if test="nickName!= null">
+               AND t_user.nick_name = #{nickName}
+            </if>
+            <if test="userName!= null">
+               AND t_user.user_name = #{userName}
+            </if>
+            <if test="passWord!= null">
+               AND t_user.pass_word = #{passWord}
+            </if>
+            <if test="email!= null">
+               AND t_user.email = #{email}
+            </if>
+            <if test="mobileNum!= null">
+               AND t_user.mobile_num = #{mobileNum}
+            </if>
+            <if test="mobileFlag!= null">
+               AND t_user.mobile_flag = #{mobileFlag}
+            </if>
+            <if test="userType!= null">
+               AND t_user.user_type = #{userType}
+            </if>
+            <if test="regTime!= null">
+               AND t_user.reg_time = #{regTime}
+            </if>
+            <if test="status!= null">
+               AND t_user.status = #{status}
+            </if>
+            <if test="face!= null">
+               AND t_user.face = #{face}
+            </if>
+            <if test="effectFrom!= null">
+               AND t_user.effect_from = #{effectFrom}
+            </if>
+            <if test="effectTo!= null">
+               AND t_user.effect_to = #{effectTo}
+            </if>
+            <if test="sourceFlag!= null">
+               AND t_user.source_flag = #{sourceFlag}
+            </if>
+            <if test="createTime!= null">
+               AND t_user.create_time = #{createTime}
+            </if>
+            <if test="orgId!= null">
+               AND t_user.org_id = #{orgId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

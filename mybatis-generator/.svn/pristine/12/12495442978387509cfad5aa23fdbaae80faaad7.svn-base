@@ -1,0 +1,506 @@
+package com.mg.generator;
+
+import java.util.*;
+import org.apache.log4j.Logger;
+import com.mg.constant.Constant;
+import com.mg.util.MappingUtil;
+
+/**
+ * 编码构建类
+ * 
+ * @author niuzhiwei
+ * 
+ */
+public class CodeBuilder {
+
+	private static Logger logger = Logger.getLogger(ConfigLoader.class);
+	// 表名称
+	protected String tableName;
+
+	// 元数据描述 map
+	protected Map<String, MetaDataDescr> colNameMetaMap;
+
+	protected List<MappingFile> mappingFile;
+
+	protected CodeBuilder(String tableName) {
+		this.tableName = tableName.trim().toLowerCase();
+		this.colNameMetaMap = new MetaMapping(tableName).getColNameMetaMap();
+	}
+
+	/**
+	 * 构造实体类的源码
+	 * 
+	 * @param entityPackageName
+	 *            实体类源码的包名
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	protected String buildEntitySource(String entityPackageName) throws Exception {
+		
+		StringBuffer buff = new StringBuffer();
+
+		buff.append("package ");
+		buff.append(entityPackageName + "; \n\n");
+		buff.append("import java.io.Serializable; \n\n");
+		buff.append("public class " + MappingUtil.getEntityName(tableName, Constant.CLASS_SUFFIX, Constant.CLASS_UP_PREFIX)
+				+ " implements Serializable{\n\n");
+		buff.append("    private static final long serialVersionUID = 1L;\n\n");
+
+		// 生成属性 private String xxx;
+		for (Iterator<String> it = colNameMetaMap.keySet().iterator(); it.hasNext();) {
+			String colName = it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			String filedName = md.getFieldName();
+			Class fieldType = md.getFieldType();
+			String fieldTypeName = fieldType.getName();
+			System.out.println(">>" + fieldType.getName());
+			if (fieldType.getName().contains("java.lang") || fieldType.getName().startsWith("[")) {
+				fieldTypeName = fieldType.getSimpleName();
+			}
+			buff.append("    private " + fieldTypeName + " " + filedName + ";\n");
+		}
+		buff.append("\n\n");
+
+		// 生成方法 public String getXXX();
+		for (Iterator<String> it = colNameMetaMap.keySet().iterator(); it.hasNext();) {
+			String colName = it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			String fieldName = md.getFieldName();
+			Class fieldType = md.getFieldType();
+			String fieldTypeName = fieldType.getName();
+
+			if (fieldType.getName().contains("java.lang") || fieldType.getName().startsWith("[")) {
+				fieldTypeName = fieldType.getSimpleName();
+			}
+			String firstChar = fieldName.substring(0, 1).toUpperCase();
+			if (fieldName.length() > 1 && Character.isUpperCase(fieldName.charAt(1))) {
+				firstChar = firstChar.toLowerCase();
+			}
+			buff.append("    public " + fieldTypeName + " get");
+			buff.append(firstChar + fieldName.substring(1) + "() {\n");
+			buff.append("        return " + fieldName + ";\n");
+			buff.append("   }\n\n");
+
+			buff.append("    public void set");
+			buff.append(firstChar + fieldName.substring(1));
+			buff.append("(" + fieldTypeName + " " + fieldName + ") {\n");
+			buff.append("        this." + fieldName + " = " + fieldName + ";\n");
+			buff.append("   }\n\n");
+		}
+
+		buff.append("}\n\n");
+		
+		logger.info("实体类生成成功"+buff);
+		// 生成各字段名拼接的字符串
+		/*
+		 * TODO:待定 buff.append("List columns as follows:\n"); int i = 0; for
+		 * (Iterator<String> it = colNameMetaMap.keySet().iterator();
+		 * it.hasNext();) { String colName = it.next(); buff.append("\"" +
+		 * colName.toLowerCase() + "\", "); i++; if (i % 7 == 0) {
+		 * buff.append("\n"); } } buff.delete(buff.lastIndexOf(","),
+		 * buff.length()); buff.append("\n");
+		 */
+		return buff.toString();
+	}
+
+	/**
+	 * 构造DAO类的源码
+	 * 
+	 * @param daoPackageName
+	 *            DAO类源码的包名
+	 * @return
+	 */
+	protected String buildDaoSource(String daoPackageName) throws Exception {
+		
+		StringBuffer buff = new StringBuffer();
+
+		buff.append("package ");
+		buff.append(daoPackageName + "; \n\n");
+
+		// public interface xxx {
+		buff.append("public interface ");
+		buff.append(Constant.INTERFACE_PREFIX+MappingUtil.getEntityName(tableName, Constant.DAO_SUFFIX, Constant.DAO_UP_PREFIX)+"{\n\n");
+		buff.append("}\n");
+		logger.info("DAO层接口生成成功："+buff);
+		return buff.toString();
+	}
+
+	/**
+	 * 创建mapper映射文件
+	 * 
+	 * @param daoPackageName
+	 * @return
+	 * @throws Exception
+	 */
+	@SuppressWarnings("rawtypes")
+	protected String buildMapperSource(String daoPackageName, String POJOPath) throws Exception {
+		
+		final String head = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
+				+ "<!DOCTYPE mapper PUBLIC  \"-//mybatis.org//DTD Mapper 3.0//EN\"  \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n\n";
+
+		StringBuffer buff = new StringBuffer(head);
+		// buff.append("<!-- 本XML文件相当于对DAO接口的实现; 属性namespace对应DAO接口名称. -->\n");
+		String className = MappingUtil.getEntityName(tableName, Constant.CLASS_SUFFIX, Constant.CLASS_UP_PREFIX);
+
+		buff.append("<mapper namespace=\"" + daoPackageName + "."
+				+Constant.INTERFACE_PREFIX+ MappingUtil.getEntityName(tableName, Constant.DAO_SUFFIX, Constant.DAO_UP_PREFIX) + "\">\n");
+
+		// 获取主键列
+		Map<String, String> pkColFieldMap = new HashMap<String, String>();
+
+		Iterator it = colNameMetaMap.keySet().iterator();
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+
+			if (md.isPk()) {//判断是否为主键 
+				//将主键加入 map中
+				pkColFieldMap.put(colName, md.getFieldName());
+			}
+		}
+		
+		//从元数据描述中获取数据
+		it = colNameMetaMap.keySet().iterator();
+		//创建集合用于写入resultMap
+		mappingFile = new ArrayList<MappingFile>();
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			Class fieldType = md.getFieldType();
+			String fieldTypeName = fieldType.getName();
+			//类型截取
+			if (fieldType.getName().contains("java.lang") || fieldType.getName().startsWith("[")) {
+				fieldTypeName = fieldType.getSimpleName();
+			}
+			MappingFile mpFile = new MappingFile();
+			mpFile.setColumn(colName);
+			mpFile.setProperty(MappingUtil.getFieldName(colName));
+			mpFile.setJavaType(fieldTypeName);
+			//MetaMapping.DBFieldType(tableName,colName) 数据库字段类型获取
+			mpFile.setJdbcType(MetaMapping.DBFieldType(tableName,colName));
+			mappingFile.add(mpFile);
+		}
+		
+		// 添加 resultMap
+		buff.append("\n    <!-- ============================= resultMap ============================= -->\n");
+		if (!pkColFieldMap.isEmpty() && pkColFieldMap.size() == 1) {
+			buff.append("    <resultMap id=\"" + className + "Map" + "\" type=\"" + POJOPath + "." + className + "\" >\n");
+		} else {
+			buff.append("    <resultMap id=\"" + className + "Map" + "\" type=\"" + POJOPath + "." + className + "\" >\n");
+		}
+
+		for (int r=0; r<mappingFile.size();r++) {
+			buff.append("        <result property=\"" + mappingFile.get(r).getProperty()+ "\" column=\"" + mappingFile.get(r).getColumn() +
+					"\" jdbcType=\"" + mappingFile.get(r).getJdbcType() +"\" javaType=\"" + mappingFile.get(r).getJavaType() +"\" >\n");
+		}
+		// resultMap 结尾
+		buff.append("    </resultMap> \n");
+		
+		//====================================================通用sql
+		buff.append("\n    <!-- ============================= COMMON SQL ============================= -->\n");
+		buff.append("    <sql id=\""+Constant.COMMON_SQL_PREFIX+""+className+"\" >\n");
+		buff.append("          SELECT \n ");
+		it = colNameMetaMap.keySet().iterator();
+		String sqlColName = (String) it.next();
+		buff.append("               "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+sqlColName);
+		int j = 0;
+		for (; it.hasNext();) {
+			sqlColName = (String) it.next();
+			buff.append("," +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+ sqlColName);
+			j++;
+			if (j % 7 == 0) {
+				buff.append("\n               ");
+			}
+		}
+		while (buff.charAt(buff.length() - 1) == ' ') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == '\n') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		buff.append("\n");
+		buff.append("           FROM \n               " + tableName + " AS "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"\n");
+		buff.append("    </sql>\n\n");
+		
+		//==================================================== 单个添加
+		buff.append("\n    <!-- ============================= INSERT ============================= -->\n");
+		String keyField=null;
+		if (!pkColFieldMap.isEmpty() && pkColFieldMap.size() == 1) {
+			keyField = pkColFieldMap.entrySet().iterator().next().getValue();
+			buff.append("    <insert id=\""+Constant.COMMON_INSTER_PREFIX+"" + className + "\" parameterType=\""+POJOPath+"."+className+"\" useGeneratedKeys=\"true\" keyProperty=\"" + keyField + "\" >\n");
+		} else {
+			buff.append("    <insert id=\"add\">\n");
+		}
+
+		buff.append("        INSERT INTO ");
+		buff.append(tableName + "( ");
+
+		StringBuffer valuesStr = new StringBuffer();
+		it = colNameMetaMap.keySet().iterator();
+
+		int i = 0;
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			//主键不加入
+			if (md.isPk() && !Constant.INSTER_IS_PK) {
+				continue;
+			 }
+			buff.append(colName + ",");
+			valuesStr.append("#{" + md.getFieldName() + "},");
+			i++;
+			if (i % 7 == 0) {
+				buff.append("\n                         ");
+				valuesStr.append("\n                 ");
+			}
+		}
+		while (buff.charAt(buff.length() - 1) == ' ') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		while (valuesStr.charAt(valuesStr.length() - 1) == ' ') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == '\n') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == ',') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (valuesStr.charAt(valuesStr.length() - 1) == '\n') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		if (valuesStr.charAt(valuesStr.length() - 1) == ',') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		buff.append(" )\n");
+
+		buff.append("        VALUES ");
+		buff.append("( " + valuesStr.toString() + ")\n");
+		buff.append("    </insert>\n\n");
+		valuesStr.delete(0, valuesStr.length());
+		
+		//======================================================== 批量添加 
+		buff.append("\n    <!-- ============================= BACTH INSTER ============================= -->\n");
+		buff.append("    <insert id=\""+Constant.COMMON_BACTH_INSTER_PREFIX+"" + className + "\" parameterType=\""+POJOPath+"."+className+"\" useGeneratedKeys=\"true\" keyProperty=\"" + keyField + "\" >\n");
+		buff.append("        INSERT INTO " + tableName + "( ");
+
+		it = colNameMetaMap.keySet().iterator();
+		i = 0;
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			//是否加入主键
+			 if (md.isPk() && !Constant.INSTER_IS_PK) {
+				 continue;
+			 }
+			buff.append(colName + ",");
+			valuesStr.append("#{item." + md.getFieldName() + "},");
+
+			i++;
+			if (i % 7 == 0) {
+				buff.append("\n                          ");
+				valuesStr.append("\n              ");
+			}
+		}
+		while (buff.charAt(buff.length() - 1) == ' ') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		while (valuesStr.charAt(valuesStr.length() - 1) == ' ') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == '\n') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == ',') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (valuesStr.charAt(valuesStr.length() - 1) == '\n') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		if (valuesStr.charAt(valuesStr.length() - 1) == ',') {
+			valuesStr.deleteCharAt(valuesStr.length() - 1);
+		}
+		buff.append(" )\n");
+
+		buff.append("        VALUES \n");
+		buff.append("        <foreach collection=\"list\" item=\"item\" index=\"index\" separator=\",\">\n");
+		buff.append("            ( " + valuesStr.toString() + " )\n");
+		buff.append("        </foreach>\n");
+		buff.append("    </insert>\n\n");
+		valuesStr.delete(0, valuesStr.length());
+		
+		// ==========================================================单个更新
+		buff.append("\n    <!-- ============================= UPDATE ============================= -->\n");
+		buff.append("    <update id=\""+Constant.COMMON_UPDATE_PREFIX+"" + className + "\">\n");
+
+		buff.append("        UPDATE " + tableName + " AS "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"\n");
+		buff.append("        <set>\n");
+		it = colNameMetaMap.keySet().iterator();
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			if (md.isPk()) {
+				continue;
+			}
+			buff.append("          <if test=\"" + md.getFieldName() + "!= null\">" +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName + "=#{" + md.getFieldName()
+					+ "},</if>\n");
+		}
+		buff.append("        </set>\n");
+
+		buff.append("        WHERE ");
+
+		Iterator<String> keyIt = pkColFieldMap.keySet().iterator();
+		for (; keyIt.hasNext();) {
+			String colName = keyIt.next();
+			buff.append(MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName + "=#{" + pkColFieldMap.get(colName) + "} AND ");
+		}
+		if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
+			buff.delete(buff.length() - 4, buff.length());
+		}
+		buff.append("\n");
+		buff.append("    </update>\n\n");
+
+		//============================================================批量更新
+		buff.append("\n    <!-- ============================= BATCH UPDATE ============================= -->\n");
+		buff.append("    <update id=\""+Constant.COMMON_BACTH_UPDATE_PREFIX+className+"\" parameterType=\"java.util.List\">\n");
+		buff.append("        <foreach collection=\"list" + className + "\" item=\"item\" index=\"index\"  separator=\";\">\n");
+		buff.append("            UPDATE " + tableName +" AS "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+ "\n");
+
+		buff.append("            <set>\n");
+		it = colNameMetaMap.keySet().iterator();
+		for (; it.hasNext();) {
+			String colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+			if (md.isPk()) {
+				continue;
+			}
+			buff.append("            <if test=\"" + md.getFieldName() + "!= null\">" +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName + "=#{" + md.getFieldName()
+					+ "},</if>\n");
+		}
+		buff.append("            </set>\n");
+
+		buff.append("            WHERE ");
+
+		keyIt = pkColFieldMap.keySet().iterator();
+		for (; keyIt.hasNext();) {
+			String colName = keyIt.next();
+			buff.append(MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName + "=#{item." +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+pkColFieldMap.get(colName) + "} AND ");
+		}
+		if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
+			buff.delete(buff.length() - 4, buff.length());
+		}
+		buff.append("\n");
+
+		buff.append("        </foreach>\n");
+		buff.append("    </update>\n\n");
+
+		//==========================================================单个删除
+		buff.append("\n    <!-- ============================= DELETE ============================= -->\n");
+		buff.append("    <delete id=\""+Constant.COMMON_DELETE_PREFIX+"" + className +"ById"+"\">\n");
+		buff.append("        DELETE FROM " + tableName + "\n");
+		buff.append("        WHERE ");
+		keyIt = pkColFieldMap.keySet().iterator();
+		for (; keyIt.hasNext();) {
+			String colName = keyIt.next();
+			buff.append(colName + "=#{" + pkColFieldMap.get(colName) + "} AND ");
+		}
+		if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
+			buff.delete(buff.length() - 4, buff.length());
+		}
+		buff.append("\n");
+		buff.append("    </delete>\n\n");
+		
+		//==========================================================批量删除
+		buff.append("\n    <!-- ============================= BABCH DELETE ============================= -->\n");
+		buff.append("    <delete id=\""+Constant.COMMON_BACTH_DELETE_PREFIX+"" + className +"ById"+"\">\n");
+		buff.append("        DELETE FROM " + tableName + "\n");
+		buff.append("        WHERE\n");
+		buff.append("        <foreach collection=\"list\" item=\"item\" index=\"index\" open=\"(\" separator=\"OR\" close=\")\">\n");
+		buff.append("            ");
+		keyIt = pkColFieldMap.keySet().iterator();
+		for (; keyIt.hasNext();) {
+			String colName = keyIt.next();
+			buff.append(colName + "=#{item." + pkColFieldMap.get(colName) + "} AND ");
+		}
+		if (buff.substring(buff.length() - 4, buff.length()).equals("AND ")) {
+			buff.delete(buff.length() - 4, buff.length());
+		}
+		buff.append("\n");
+		buff.append("        </foreach>\n");
+		buff.append("    </delete>\n\n");
+		
+		//==========================================================全部删除
+		buff.append("\n    <!-- ============================= DELETE ALL ============================= -->\n");
+		buff.append("    <delete id=\""+Constant.COMMON_DELETE_ALL_PREFIX+"\">\n");
+		buff.append("        DELETE FROM " + tableName + "\n");
+		buff.append("    </delete>\n\n");
+		
+		
+		//==========================================================查询记录总数
+		buff.append("\n    <!-- ============================= SELECT COUNT============================= -->\n");
+		buff.append("    <select id=\"count\" resultType=\"java.lang.Long\">\n");
+		buff.append("        SELECT COUNT(*) FROM " + tableName + " AS "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"\n");
+		buff.append("    </select>\n\n");
+		
+		
+		//==============================================================查询
+		buff.append("\n    <!-- ============================= SELECT ============================= -->\n");
+		buff.append("    <select id=\""+Constant.COMMON_SELECT_LIST_PREFIX+""+className+"\" resultMap=\""
+				+ MappingUtil.getEntityName(tableName, Constant.CLASS_SUFFIX, Constant.CLASS_UP_PREFIX) +"Map"+ "\">\n");
+		buff.append("        SELECT \n ");
+
+		it = colNameMetaMap.keySet().iterator();
+		String colName = (String) it.next();
+		buff.append("               "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName);
+
+		i = 0;
+		for (; it.hasNext();) {
+			colName = (String) it.next();
+			buff.append("," +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+ colName);
+			i++;
+			if (i % 7 == 0) {
+				buff.append("\n               ");
+			}
+		}
+		while (buff.charAt(buff.length() - 1) == ' ') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		if (buff.charAt(buff.length() - 1) == '\n') {
+			buff.deleteCharAt(buff.length() - 1);
+		}
+		buff.append("\n");
+
+		buff.append("         FROM \n                " + tableName + " AS "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"\n");
+		buff.append("        <where>\n");
+
+		it = colNameMetaMap.keySet().iterator();
+		for (; it.hasNext();) {
+			colName = (String) it.next();
+			MetaDataDescr md = colNameMetaMap.get(colName);
+
+			String filedName = md.getFieldName();
+			if (md.getFieldType().equals("String")) {
+				buff.append("            <if test=\"" + filedName + "!= null and " + filedName + "!=''\">\n");
+			} else {
+				buff.append("            <if test=\"" + filedName + "!= null\">\n");
+			}
+			if (md.getFieldType().equals("String")) {
+				buff.append("               AND " +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+colName + " = #{" + filedName + "}\n");
+			} else if (md.getFieldType().equals("Double") || md.getFieldType().equals("Float")) {
+				buff.append("               AND <![CDATA[ "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"." + colName + " >= #{" + filedName + "} ]]>\n");
+			} else if (md.getFieldType().equals("Date")) {
+				buff.append("               AND DATE_FORMAT(" +MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+ colName + ",'%Y-%m-%d') = #{" + filedName + "}\n");
+			} else {
+				buff.append("               AND "+MappingUtil.getEntityName(tableName, "", Constant.CLASS_UP_PREFIX)+"."+ colName + " = #{" + filedName + "}\n");
+			}
+			buff.append("            </if>\n");
+		}
+
+		buff.append("        </where>\n");
+		buff.append("    </select>\n\n");
+		buff.append("</mapper>\n");
+		logger.info("mybatis映射文件生成成功："+buff);
+		return buff.toString();
+	}
+
+}

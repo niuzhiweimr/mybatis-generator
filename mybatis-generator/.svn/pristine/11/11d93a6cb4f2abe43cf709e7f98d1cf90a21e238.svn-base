@@ -1,0 +1,156 @@
+package com.morp.model; 
+
+import java.io.Serializable; 
+
+public class UserEbo implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
+    private Integer uid;
+    private String nickName;
+    private String userName;
+    private String passWord;
+    private String email;
+    private String mobileNum;
+    private String mobileFlag;
+    private String userType;
+    private java.sql.Timestamp regTime;
+    private String status;
+    private String face;
+    private java.sql.Date effectFrom;
+    private java.sql.Date effectTo;
+    private String sourceFlag;
+    private java.sql.Timestamp createTime;
+    private Integer orgId;
+
+
+    public Integer getUid() {
+        return uid;
+   }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+   }
+
+    public String getNickName() {
+        return nickName;
+   }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+   }
+
+    public String getUserName() {
+        return userName;
+   }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+   }
+
+    public String getPassWord() {
+        return passWord;
+   }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+   }
+
+    public String getEmail() {
+        return email;
+   }
+
+    public void setEmail(String email) {
+        this.email = email;
+   }
+
+    public String getMobileNum() {
+        return mobileNum;
+   }
+
+    public void setMobileNum(String mobileNum) {
+        this.mobileNum = mobileNum;
+   }
+
+    public String getMobileFlag() {
+        return mobileFlag;
+   }
+
+    public void setMobileFlag(String mobileFlag) {
+        this.mobileFlag = mobileFlag;
+   }
+
+    public String getUserType() {
+        return userType;
+   }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+   }
+
+    public java.sql.Timestamp getRegTime() {
+        return regTime;
+   }
+
+    public void setRegTime(java.sql.Timestamp regTime) {
+        this.regTime = regTime;
+   }
+
+    public String getStatus() {
+        return status;
+   }
+
+    public void setStatus(String status) {
+        this.status = status;
+   }
+
+    public String getFace() {
+        return face;
+   }
+
+    public void setFace(String face) {
+        this.face = face;
+   }
+
+    public java.sql.Date getEffectFrom() {
+        return effectFrom;
+   }
+
+    public void setEffectFrom(java.sql.Date effectFrom) {
+        this.effectFrom = effectFrom;
+   }
+
+    public java.sql.Date getEffectTo() {
+        return effectTo;
+   }
+
+    public void setEffectTo(java.sql.Date effectTo) {
+        this.effectTo = effectTo;
+   }
+
+    public String getSourceFlag() {
+        return sourceFlag;
+   }
+
+    public void setSourceFlag(String sourceFlag) {
+        this.sourceFlag = sourceFlag;
+   }
+
+    public java.sql.Timestamp getCreateTime() {
+        return createTime;
+   }
+
+    public void setCreateTime(java.sql.Timestamp createTime) {
+        this.createTime = createTime;
+   }
+
+    public Integer getOrgId() {
+        return orgId;
+   }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+   }
+
+}
+

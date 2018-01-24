@@ -1,0 +1,156 @@
+package com.morp.model; 
+
+import java.io.Serializable; 
+
+public class InfoEbo implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
+    private Integer id;
+    private String infoCode;
+    private String infoTitle;
+    private String infoDesc;
+    private Integer infoCatgId;
+    private Integer totalViewNum;
+    private Integer totalZanNum;
+    private Integer totalFocusNum;
+    private String headImgUrl;
+    private String iconImgUrl;
+    private String flag;
+    private Integer pubId;
+    private Integer deptId;
+    private Integer orgId;
+    private java.sql.Timestamp pubTime;
+    private String infoType;
+
+
+    public Integer getId() {
+        return id;
+   }
+
+    public void setId(Integer id) {
+        this.id = id;
+   }
+
+    public String getInfoCode() {
+        return infoCode;
+   }
+
+    public void setInfoCode(String infoCode) {
+        this.infoCode = infoCode;
+   }
+
+    public String getInfoTitle() {
+        return infoTitle;
+   }
+
+    public void setInfoTitle(String infoTitle) {
+        this.infoTitle = infoTitle;
+   }
+
+    public String getInfoDesc() {
+        return infoDesc;
+   }
+
+    public void setInfoDesc(String infoDesc) {
+        this.infoDesc = infoDesc;
+   }
+
+    public Integer getInfoCatgId() {
+        return infoCatgId;
+   }
+
+    public void setInfoCatgId(Integer infoCatgId) {
+        this.infoCatgId = infoCatgId;
+   }
+
+    public Integer getTotalViewNum() {
+        return totalViewNum;
+   }
+
+    public void setTotalViewNum(Integer totalViewNum) {
+        this.totalViewNum = totalViewNum;
+   }
+
+    public Integer getTotalZanNum() {
+        return totalZanNum;
+   }
+
+    public void setTotalZanNum(Integer totalZanNum) {
+        this.totalZanNum = totalZanNum;
+   }
+
+    public Integer getTotalFocusNum() {
+        return totalFocusNum;
+   }
+
+    public void setTotalFocusNum(Integer totalFocusNum) {
+        this.totalFocusNum = totalFocusNum;
+   }
+
+    public String getHeadImgUrl() {
+        return headImgUrl;
+   }
+
+    public void setHeadImgUrl(String headImgUrl) {
+        this.headImgUrl = headImgUrl;
+   }
+
+    public String getIconImgUrl() {
+        return iconImgUrl;
+   }
+
+    public void setIconImgUrl(String iconImgUrl) {
+        this.iconImgUrl = iconImgUrl;
+   }
+
+    public String getFlag() {
+        return flag;
+   }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+   }
+
+    public Integer getPubId() {
+        return pubId;
+   }
+
+    public void setPubId(Integer pubId) {
+        this.pubId = pubId;
+   }
+
+    public Integer getDeptId() {
+        return deptId;
+   }
+
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+   }
+
+    public Integer getOrgId() {
+        return orgId;
+   }
+
+    public void setOrgId(Integer orgId) {
+        this.orgId = orgId;
+   }
+
+    public java.sql.Timestamp getPubTime() {
+        return pubTime;
+   }
+
+    public void setPubTime(java.sql.Timestamp pubTime) {
+        this.pubTime = pubTime;
+   }
+
+    public String getInfoType() {
+        return infoType;
+   }
+
+    public void setInfoType(String infoType) {
+        this.infoType = infoType;
+   }
+
+}
+

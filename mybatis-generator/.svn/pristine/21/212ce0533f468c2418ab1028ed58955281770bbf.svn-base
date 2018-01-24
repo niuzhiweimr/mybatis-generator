@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.morp.dao.IInfoDao">
+
+    <!-- ============================= resultMap ============================= -->
+    <resultMap id="InfoEboMap" type="com.morp.model.InfoEbo" >
+        <result property="id" column="id" jdbcType="INT" javaType="Integer" >
+        <result property="infoCode" column="info_code" jdbcType="VARCHAR" javaType="String" >
+        <result property="infoTitle" column="info_title" jdbcType="VARCHAR" javaType="String" >
+        <result property="infoDesc" column="info_desc" jdbcType="VARCHAR" javaType="String" >
+        <result property="infoCatgId" column="info_catg_id" jdbcType="INT" javaType="Integer" >
+        <result property="totalViewNum" column="total_view_num" jdbcType="INT" javaType="Integer" >
+        <result property="totalZanNum" column="total_zan_num" jdbcType="INT" javaType="Integer" >
+        <result property="totalFocusNum" column="total_focus_num" jdbcType="INT" javaType="Integer" >
+        <result property="headImgUrl" column="head_img_url" jdbcType="VARCHAR" javaType="String" >
+        <result property="iconImgUrl" column="icon_img_url" jdbcType="VARCHAR" javaType="String" >
+        <result property="flag" column="flag" jdbcType="VARCHAR" javaType="String" >
+        <result property="pubId" column="pub_id" jdbcType="INT" javaType="Integer" >
+        <result property="deptId" column="dept_id" jdbcType="INT" javaType="Integer" >
+        <result property="orgId" column="org_id" jdbcType="INT" javaType="Integer" >
+        <result property="pubTime" column="pub_time" jdbcType="DATETIME" javaType="java.sql.Timestamp" >
+        <result property="infoType" column="info_type" jdbcType="CHAR" javaType="String" >
+    </resultMap> 
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="addInfoEbo" parameterType="com.morp.model.InfoEbo" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO t_info( info_code,info_title,info_desc,info_catg_id,total_view_num,total_zan_num,total_focus_num,
+                         head_img_url,icon_img_url,flag,pub_id,dept_id,org_id,pub_time,
+                         info_type )
+        VALUES ( #{infoCode},#{infoTitle},#{infoDesc},#{infoCatgId},#{totalViewNum},#{totalZanNum},#{totalFocusNum},
+                 #{headImgUrl},#{iconImgUrl},#{flag},#{pubId},#{deptId},#{orgId},#{pubTime},
+                 #{infoType})
+    </insert>
+
+
+    <!-- ============================= BACTH INSTER ============================= -->
+    <insert id="batchAddInfoEbo" parameterType="com.morp.model.InfoEbo" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO t_info( info_code,info_title,info_desc,info_catg_id,total_view_num,total_zan_num,total_focus_num,
+                          head_img_url,icon_img_url,flag,pub_id,dept_id,org_id,pub_time,
+                          info_type )
+        VALUES 
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.infoCode},#{item.infoTitle},#{item.infoDesc},#{item.infoCatgId},#{item.totalViewNum},#{item.totalZanNum},#{item.totalFocusNum},
+              #{item.headImgUrl},#{item.iconImgUrl},#{item.flag},#{item.pubId},#{item.deptId},#{item.orgId},#{item.pubTime},
+              #{item.infoType} )
+        </foreach>
+    </insert>
+
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="updateInfoEbo">
+        UPDATE t_info
+        <set>
+          <if test="infoCode!= null">info_code=#{infoCode},</if>
+          <if test="infoTitle!= null">info_title=#{infoTitle},</if>
+          <if test="infoDesc!= null">info_desc=#{infoDesc},</if>
+          <if test="infoCatgId!= null">info_catg_id=#{infoCatgId},</if>
+          <if test="totalViewNum!= null">total_view_num=#{totalViewNum},</if>
+          <if test="totalZanNum!= null">total_zan_num=#{totalZanNum},</if>
+          <if test="totalFocusNum!= null">total_focus_num=#{totalFocusNum},</if>
+          <if test="headImgUrl!= null">head_img_url=#{headImgUrl},</if>
+          <if test="iconImgUrl!= null">icon_img_url=#{iconImgUrl},</if>
+          <if test="flag!= null">flag=#{flag},</if>
+          <if test="pubId!= null">pub_id=#{pubId},</if>
+          <if test="deptId!= null">dept_id=#{deptId},</if>
+          <if test="orgId!= null">org_id=#{orgId},</if>
+          <if test="pubTime!= null">pub_time=#{pubTime},</if>
+          <if test="infoType!= null">info_type=#{infoType},</if>
+        </set>
+        WHERE id=#{id} 
+    </update>
+
+
+    <!-- ============================= BATCH UPDATE ============================= -->
+    <update id="batchUpdateInfoEbo" parameterType="java.util.List">
+        <foreach collection="listInfoEbo" item="item" index="index"  separator=";">
+            UPDATE t_info
+            <set>
+            <if test="infoCode!= null">info_code=#{infoCode},</if>
+            <if test="infoTitle!= null">info_title=#{infoTitle},</if>
+            <if test="infoDesc!= null">info_desc=#{infoDesc},</if>
+            <if test="infoCatgId!= null">info_catg_id=#{infoCatgId},</if>
+            <if test="totalViewNum!= null">total_view_num=#{totalViewNum},</if>
+            <if test="totalZanNum!= null">total_zan_num=#{totalZanNum},</if>
+            <if test="totalFocusNum!= null">total_focus_num=#{totalFocusNum},</if>
+            <if test="headImgUrl!= null">head_img_url=#{headImgUrl},</if>
+            <if test="iconImgUrl!= null">icon_img_url=#{iconImgUrl},</if>
+            <if test="flag!= null">flag=#{flag},</if>
+            <if test="pubId!= null">pub_id=#{pubId},</if>
+            <if test="deptId!= null">dept_id=#{deptId},</if>
+            <if test="orgId!= null">org_id=#{orgId},</if>
+            <if test="pubTime!= null">pub_time=#{pubTime},</if>
+            <if test="infoType!= null">info_type=#{infoType},</if>
+            </set>
+            WHERE id=#{item.id} 
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delInfoEboById">
+        DELETE FROM t_info
+        WHERE id=#{id} 
+    </delete>
+
+
+    <!-- ============================= BABCH DELETE ============================= -->
+    <delete id="delBatchInfoEboById">
+        DELETE FROM t_info
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            id=#{item.id} 
+        </foreach>
+    </delete>
+
+
+    <!-- ============================= DELETE ALL ============================= -->
+    <delete id="deleteAll">
+        DELETE FROM t_info
+    </delete>
+
+
+    <!-- ============================= SELECT COUNT============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_infoASt_info
+    </select>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="listInfoEbo" resultMap="InfoEboMap">
+        SELECT t_info.id,t_info.info_code,t_info.info_title,t_info.info_desc,t_info.info_catg_id,t_info.total_view_num,t_info.total_zan_num,t_info.total_focus_num
+               ,t_info.head_img_url,t_info.icon_img_url,t_info.flag,t_info.pub_id,t_info.dept_id,t_info.org_id,t_info.pub_time
+               ,t_info.info_type
+         FROM t_info AS t_info
+        <where>
+            <if test="id!= null">
+               AND t_info.id = #{id}
+            </if>
+            <if test="infoCode!= null">
+               AND t_info.info_code = #{infoCode}
+            </if>
+            <if test="infoTitle!= null">
+               AND t_info.info_title = #{infoTitle}
+            </if>
+            <if test="infoDesc!= null">
+               AND t_info.info_desc = #{infoDesc}
+            </if>
+            <if test="infoCatgId!= null">
+               AND t_info.info_catg_id = #{infoCatgId}
+            </if>
+            <if test="totalViewNum!= null">
+               AND t_info.total_view_num = #{totalViewNum}
+            </if>
+            <if test="totalZanNum!= null">
+               AND t_info.total_zan_num = #{totalZanNum}
+            </if>
+            <if test="totalFocusNum!= null">
+               AND t_info.total_focus_num = #{totalFocusNum}
+            </if>
+            <if test="headImgUrl!= null">
+               AND t_info.head_img_url = #{headImgUrl}
+            </if>
+            <if test="iconImgUrl!= null">
+               AND t_info.icon_img_url = #{iconImgUrl}
+            </if>
+            <if test="flag!= null">
+               AND t_info.flag = #{flag}
+            </if>
+            <if test="pubId!= null">
+               AND t_info.pub_id = #{pubId}
+            </if>
+            <if test="deptId!= null">
+               AND t_info.dept_id = #{deptId}
+            </if>
+            <if test="orgId!= null">
+               AND t_info.org_id = #{orgId}
+            </if>
+            <if test="pubTime!= null">
+               AND t_info.pub_time = #{pubTime}
+            </if>
+            <if test="infoType!= null">
+               AND t_info.info_type = #{infoType}
+            </if>
+        </where>
+    </select>
+
+</mapper>

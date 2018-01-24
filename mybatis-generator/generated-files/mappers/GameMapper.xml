@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.morp.dao.IGameDao">
+
+    <!-- ============================= resultMap ============================= -->
+    <resultMap id="GameEboMap" type="com.morp.model.GameEbo" >
+        <result property="id" column="id" jdbcType="VARCHAR" javaType="String" >
+        <result property="bigLogurl" column="big_logurl" jdbcType="VARCHAR" javaType="String" >
+        <result property="descript" column="descript" jdbcType="VARCHAR" javaType="String" >
+        <result property="develop" column="develop" jdbcType="VARCHAR" javaType="String" >
+        <result property="name" column="name" jdbcType="VARCHAR" javaType="String" >
+        <result property="hotLevel" column="hot_level" jdbcType="INT" javaType="Integer" >
+        <result property="packageName" column="package_name" jdbcType="VARCHAR" javaType="String" >
+        <result property="releaseTime" column="release_time" jdbcType="TIMESTAMP" javaType="java.sql.Timestamp" >
+        <result property="size" column="size" jdbcType="VARCHAR" javaType="String" >
+        <result property="smallLogurl" column="small_logurl" jdbcType="VARCHAR" javaType="String" >
+        <result property="version" column="version" jdbcType="VARCHAR" javaType="String" >
+        <result property="classid" column="classid" jdbcType="VARCHAR" javaType="String" >
+        <result property="langid" column="langid" jdbcType="VARCHAR" javaType="String" >
+        <result property="systemid" column="systemid" jdbcType="VARCHAR" javaType="String" >
+        <result property="engName" column="eng_name" jdbcType="VARCHAR" javaType="String" >
+        <result property="status" column="status" jdbcType="INT" javaType="Integer" >
+        <result property="score" column="score" jdbcType="DECIMAL" javaType="java.math.BigDecimal" >
+        <result property="posterUrl" column="poster_url" jdbcType="VARCHAR" javaType="String" >
+        <result property="scoreFlower" column="score_flower" jdbcType="INT" javaType="Integer" >
+        <result property="scoreShit" column="score_shit" jdbcType="INT" javaType="Integer" >
+        <result property="ypkDataDir" column="ypk_data_dir" jdbcType="VARCHAR" javaType="String" >
+        <result property="gametypeid" column="gametypeid" jdbcType="VARCHAR" javaType="String" >
+        <result property="offshelvesReason" column="offshelves_reason" jdbcType="VARCHAR" javaType="String" >
+        <result property="videoUrl" column="video_url" jdbcType="VARCHAR" javaType="String" >
+        <result property="minsdk" column="minsdk" jdbcType="INT" javaType="Integer" >
+        <result property="online" column="online" jdbcType="TINYINT" javaType="Boolean" >
+        <result property="versionCode" column="version_code" jdbcType="VARCHAR" javaType="String" >
+        <result property="storetype" column="storetype" jdbcType="TINYINT" javaType="Boolean" >
+        <result property="submitEditorName" column="submit_editor_name" jdbcType="VARCHAR" javaType="String" >
+        <result property="gangdian" column="gangdian" jdbcType="TINYINT" javaType="Boolean" >
+        <result property="updateTime" column="update_time" jdbcType="DATETIME" javaType="java.sql.Timestamp" >
+        <result property="gdLogurl" column="gd_logurl" jdbcType="VARCHAR" javaType="String" >
+        <result property="articleId" column="article_id" jdbcType="VARCHAR" javaType="String" >
+        <result property="controlConfigInfo" column="control_config_info" jdbcType="VARCHAR" javaType="String" >
+    </resultMap> 
+
+    <!-- ============================= COMMON SQL ============================= -->
+    <sql id="getGameEbo" >
+          SELECT 
+                Game.id,Game.big_logurl,Game.descript,Game.develop,Game.name,Game.hot_level,Game.package_name,Game.release_time
+               ,Game.size,Game.small_logurl,Game.version,Game.classid,Game.langid,Game.systemid,Game.eng_name
+               ,Game.status,Game.score,Game.poster_url,Game.score_flower,Game.score_shit,Game.ypk_data_dir,Game.gametypeid
+               ,Game.offshelves_reason,Game.video_url,Game.minsdk,Game.online,Game.version_code,Game.storetype,Game.submit_editor_name
+               ,Game.gangdian,Game.update_time,Game.gd_logurl,Game.article_id,Game.control_config_info
+           FROM 
+               game AS Game
+    </sql>
+
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="addGameEbo" parameterType="com.morp.model.GameEbo" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO game( big_logurl,descript,develop,name,hot_level,package_name,release_time,
+                         size,small_logurl,version,classid,langid,systemid,eng_name,
+                         status,score,poster_url,score_flower,score_shit,ypk_data_dir,gametypeid,
+                         offshelves_reason,video_url,minsdk,online,version_code,storetype,submit_editor_name,
+                         gangdian,update_time,gd_logurl,article_id,control_config_info )
+        VALUES ( #{bigLogurl},#{descript},#{develop},#{name},#{hotLevel},#{packageName},#{releaseTime},
+                 #{size},#{smallLogurl},#{version},#{classid},#{langid},#{systemid},#{engName},
+                 #{status},#{score},#{posterUrl},#{scoreFlower},#{scoreShit},#{ypkDataDir},#{gametypeid},
+                 #{offshelvesReason},#{videoUrl},#{minsdk},#{online},#{versionCode},#{storetype},#{submitEditorName},
+                 #{gangdian},#{updateTime},#{gdLogurl},#{articleId},#{controlConfigInfo})
+    </insert>
+
+
+    <!-- ============================= BACTH INSTER ============================= -->
+    <insert id="bacthAddGameEbo" parameterType="com.morp.model.GameEbo" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO game( big_logurl,descript,develop,name,hot_level,package_name,release_time,
+                          size,small_logurl,version,classid,langid,systemid,eng_name,
+                          status,score,poster_url,score_flower,score_shit,ypk_data_dir,gametypeid,
+                          offshelves_reason,video_url,minsdk,online,version_code,storetype,submit_editor_name,
+                          gangdian,update_time,gd_logurl,article_id,control_config_info )
+        VALUES 
+        <foreach collection="list" item="item" index="index" separator=",">
+            ( #{item.bigLogurl},#{item.descript},#{item.develop},#{item.name},#{item.hotLevel},#{item.packageName},#{item.releaseTime},
+              #{item.size},#{item.smallLogurl},#{item.version},#{item.classid},#{item.langid},#{item.systemid},#{item.engName},
+              #{item.status},#{item.score},#{item.posterUrl},#{item.scoreFlower},#{item.scoreShit},#{item.ypkDataDir},#{item.gametypeid},
+              #{item.offshelvesReason},#{item.videoUrl},#{item.minsdk},#{item.online},#{item.versionCode},#{item.storetype},#{item.submitEditorName},
+              #{item.gangdian},#{item.updateTime},#{item.gdLogurl},#{item.articleId},#{item.controlConfigInfo} )
+        </foreach>
+    </insert>
+
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="updateGameEbo">
+        UPDATE game AS Game
+        <set>
+          <if test="bigLogurl!= null">Game.big_logurl=#{bigLogurl},</if>
+          <if test="descript!= null">Game.descript=#{descript},</if>
+          <if test="develop!= null">Game.develop=#{develop},</if>
+          <if test="name!= null">Game.name=#{name},</if>
+          <if test="hotLevel!= null">Game.hot_level=#{hotLevel},</if>
+          <if test="packageName!= null">Game.package_name=#{packageName},</if>
+          <if test="releaseTime!= null">Game.release_time=#{releaseTime},</if>
+          <if test="size!= null">Game.size=#{size},</if>
+          <if test="smallLogurl!= null">Game.small_logurl=#{smallLogurl},</if>
+          <if test="version!= null">Game.version=#{version},</if>
+          <if test="classid!= null">Game.classid=#{classid},</if>
+          <if test="langid!= null">Game.langid=#{langid},</if>
+          <if test="systemid!= null">Game.systemid=#{systemid},</if>
+          <if test="engName!= null">Game.eng_name=#{engName},</if>
+          <if test="status!= null">Game.status=#{status},</if>
+          <if test="score!= null">Game.score=#{score},</if>
+          <if test="posterUrl!= null">Game.poster_url=#{posterUrl},</if>
+          <if test="scoreFlower!= null">Game.score_flower=#{scoreFlower},</if>
+          <if test="scoreShit!= null">Game.score_shit=#{scoreShit},</if>
+          <if test="ypkDataDir!= null">Game.ypk_data_dir=#{ypkDataDir},</if>
+          <if test="gametypeid!= null">Game.gametypeid=#{gametypeid},</if>
+          <if test="offshelvesReason!= null">Game.offshelves_reason=#{offshelvesReason},</if>
+          <if test="videoUrl!= null">Game.video_url=#{videoUrl},</if>
+          <if test="minsdk!= null">Game.minsdk=#{minsdk},</if>
+          <if test="online!= null">Game.online=#{online},</if>
+          <if test="versionCode!= null">Game.version_code=#{versionCode},</if>
+          <if test="storetype!= null">Game.storetype=#{storetype},</if>
+          <if test="submitEditorName!= null">Game.submit_editor_name=#{submitEditorName},</if>
+          <if test="gangdian!= null">Game.gangdian=#{gangdian},</if>
+          <if test="updateTime!= null">Game.update_time=#{updateTime},</if>
+          <if test="gdLogurl!= null">Game.gd_logurl=#{gdLogurl},</if>
+          <if test="articleId!= null">Game.article_id=#{articleId},</if>
+          <if test="controlConfigInfo!= null">Game.control_config_info=#{controlConfigInfo},</if>
+        </set>
+        WHERE Game.id=#{id} 
+    </update>
+
+
+    <!-- ============================= BATCH UPDATE ============================= -->
+    <update id="bachtUpGameEbo" parameterType="java.util.List">
+        <foreach collection="listGameEbo" item="item" index="index"  separator=";">
+            UPDATE game AS Game
+            <set>
+            <if test="bigLogurl!= null">Game.big_logurl=#{bigLogurl},</if>
+            <if test="descript!= null">Game.descript=#{descript},</if>
+            <if test="develop!= null">Game.develop=#{develop},</if>
+            <if test="name!= null">Game.name=#{name},</if>
+            <if test="hotLevel!= null">Game.hot_level=#{hotLevel},</if>
+            <if test="packageName!= null">Game.package_name=#{packageName},</if>
+            <if test="releaseTime!= null">Game.release_time=#{releaseTime},</if>
+            <if test="size!= null">Game.size=#{size},</if>
+            <if test="smallLogurl!= null">Game.small_logurl=#{smallLogurl},</if>
+            <if test="version!= null">Game.version=#{version},</if>
+            <if test="classid!= null">Game.classid=#{classid},</if>
+            <if test="langid!= null">Game.langid=#{langid},</if>
+            <if test="systemid!= null">Game.systemid=#{systemid},</if>
+            <if test="engName!= null">Game.eng_name=#{engName},</if>
+            <if test="status!= null">Game.status=#{status},</if>
+            <if test="score!= null">Game.score=#{score},</if>
+            <if test="posterUrl!= null">Game.poster_url=#{posterUrl},</if>
+            <if test="scoreFlower!= null">Game.score_flower=#{scoreFlower},</if>
+            <if test="scoreShit!= null">Game.score_shit=#{scoreShit},</if>
+            <if test="ypkDataDir!= null">Game.ypk_data_dir=#{ypkDataDir},</if>
+            <if test="gametypeid!= null">Game.gametypeid=#{gametypeid},</if>
+            <if test="offshelvesReason!= null">Game.offshelves_reason=#{offshelvesReason},</if>
+            <if test="videoUrl!= null">Game.video_url=#{videoUrl},</if>
+            <if test="minsdk!= null">Game.minsdk=#{minsdk},</if>
+            <if test="online!= null">Game.online=#{online},</if>
+            <if test="versionCode!= null">Game.version_code=#{versionCode},</if>
+            <if test="storetype!= null">Game.storetype=#{storetype},</if>
+            <if test="submitEditorName!= null">Game.submit_editor_name=#{submitEditorName},</if>
+            <if test="gangdian!= null">Game.gangdian=#{gangdian},</if>
+            <if test="updateTime!= null">Game.update_time=#{updateTime},</if>
+            <if test="gdLogurl!= null">Game.gd_logurl=#{gdLogurl},</if>
+            <if test="articleId!= null">Game.article_id=#{articleId},</if>
+            <if test="controlConfigInfo!= null">Game.control_config_info=#{controlConfigInfo},</if>
+            </set>
+            WHERE Game.id=#{item.Game.id} 
+        </foreach>
+    </update>
+
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delGameEboById">
+        DELETE FROM game
+        WHERE id=#{id} 
+    </delete>
+
+
+    <!-- ============================= BABCH DELETE ============================= -->
+    <delete id="bacthDelGameEboById">
+        DELETE FROM game
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            id=#{item.id} 
+        </foreach>
+    </delete>
+
+
+    <!-- ============================= DELETE ALL ============================= -->
+    <delete id="delAll">
+        DELETE FROM game
+    </delete>
+
+
+    <!-- ============================= SELECT COUNT============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM game AS Game
+    </select>
+
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="listGameEbo" resultMap="GameEboMap">
+        SELECT 
+                Game.id,Game.big_logurl,Game.descript,Game.develop,Game.name,Game.hot_level,Game.package_name,Game.release_time
+               ,Game.size,Game.small_logurl,Game.version,Game.classid,Game.langid,Game.systemid,Game.eng_name
+               ,Game.status,Game.score,Game.poster_url,Game.score_flower,Game.score_shit,Game.ypk_data_dir,Game.gametypeid
+               ,Game.offshelves_reason,Game.video_url,Game.minsdk,Game.online,Game.version_code,Game.storetype,Game.submit_editor_name
+               ,Game.gangdian,Game.update_time,Game.gd_logurl,Game.article_id,Game.control_config_info
+         FROM 
+                game AS Game
+        <where>
+            <if test="id!= null">
+               AND Game.id = #{id}
+            </if>
+            <if test="bigLogurl!= null">
+               AND Game.big_logurl = #{bigLogurl}
+            </if>
+            <if test="descript!= null">
+               AND Game.descript = #{descript}
+            </if>
+            <if test="develop!= null">
+               AND Game.develop = #{develop}
+            </if>
+            <if test="name!= null">
+               AND Game.name = #{name}
+            </if>
+            <if test="hotLevel!= null">
+               AND Game.hot_level = #{hotLevel}
+            </if>
+            <if test="packageName!= null">
+               AND Game.package_name = #{packageName}
+            </if>
+            <if test="releaseTime!= null">
+               AND Game.release_time = #{releaseTime}
+            </if>
+            <if test="size!= null">
+               AND Game.size = #{size}
+            </if>
+            <if test="smallLogurl!= null">
+               AND Game.small_logurl = #{smallLogurl}
+            </if>
+            <if test="version!= null">
+               AND Game.version = #{version}
+            </if>
+            <if test="classid!= null">
+               AND Game.classid = #{classid}
+            </if>
+            <if test="langid!= null">
+               AND Game.langid = #{langid}
+            </if>
+            <if test="systemid!= null">
+               AND Game.systemid = #{systemid}
+            </if>
+            <if test="engName!= null">
+               AND Game.eng_name = #{engName}
+            </if>
+            <if test="status!= null">
+               AND Game.status = #{status}
+            </if>
+            <if test="score!= null">
+               AND Game.score = #{score}
+            </if>
+            <if test="posterUrl!= null">
+               AND Game.poster_url = #{posterUrl}
+            </if>
+            <if test="scoreFlower!= null">
+               AND Game.score_flower = #{scoreFlower}
+            </if>
+            <if test="scoreShit!= null">
+               AND Game.score_shit = #{scoreShit}
+            </if>
+            <if test="ypkDataDir!= null">
+               AND Game.ypk_data_dir = #{ypkDataDir}
+            </if>
+            <if test="gametypeid!= null">
+               AND Game.gametypeid = #{gametypeid}
+            </if>
+            <if test="offshelvesReason!= null">
+               AND Game.offshelves_reason = #{offshelvesReason}
+            </if>
+            <if test="videoUrl!= null">
+               AND Game.video_url = #{videoUrl}
+            </if>
+            <if test="minsdk!= null">
+               AND Game.minsdk = #{minsdk}
+            </if>
+            <if test="online!= null">
+               AND Game.online = #{online}
+            </if>
+            <if test="versionCode!= null">
+               AND Game.version_code = #{versionCode}
+            </if>
+            <if test="storetype!= null">
+               AND Game.storetype = #{storetype}
+            </if>
+            <if test="submitEditorName!= null">
+               AND Game.submit_editor_name = #{submitEditorName}
+            </if>
+            <if test="gangdian!= null">
+               AND Game.gangdian = #{gangdian}
+            </if>
+            <if test="updateTime!= null">
+               AND Game.update_time = #{updateTime}
+            </if>
+            <if test="gdLogurl!= null">
+               AND Game.gd_logurl = #{gdLogurl}
+            </if>
+            <if test="articleId!= null">
+               AND Game.article_id = #{articleId}
+            </if>
+            <if test="controlConfigInfo!= null">
+               AND Game.control_config_info = #{controlConfigInfo}
+            </if>
+        </where>
+    </select>
+
+</mapper>

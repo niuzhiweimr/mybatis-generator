@@ -1,0 +1,7 @@
+pojo-suffix=_Ebo
+pojo-upPrefix=2
+dao-suffix=_Dao
+dao-upPrefix=2
+mapper-suffix=_mapper
+mapper-upPrefix=2
+
